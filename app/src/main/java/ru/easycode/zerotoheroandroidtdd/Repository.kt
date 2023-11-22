@@ -1,7 +1,5 @@
 package ru.easycode.zerotoheroandroidtdd
 
-import javax.sql.CommonDataSource
-
 interface Repository {
 
     interface Read {

@@ -1,5 +1,6 @@
 package ru.easycode.zerotoheroandroidtdd
 
+import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +17,7 @@ class AddViewModel(
 ): ViewModel() {
 
     private val viewModelScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
-    fun add(value:String) {
+    fun add(value: String) {
         viewModelScope.launch(dispatcher) {
             repository.add(value)
             liveDataWrapper.add(value)
@@ -25,6 +26,6 @@ class AddViewModel(
     }
 
     fun comeback() {
-        clear.clearViewModel(addViewModel::class.java)
+        clear.clearViewModel(AddViewModel::class.java)
     }
 }

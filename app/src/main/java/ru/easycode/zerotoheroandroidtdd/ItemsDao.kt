@@ -7,8 +7,8 @@ import androidx.room.Query
 @Dao
 interface ItemsDao {
     @Query("SELECT * FROM items_table")
-    fun list():List<ItemsCache>
+    fun list():List<ItemCache>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun add(item: ItemsCache)
+    fun add(item: ItemCache)
 }
