@@ -6,6 +6,7 @@ import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import ru.easycode.zerotoheroandroidtdd.databinding.ItemLayoutBinding
 
 class Adapter: RecyclerView.Adapter<ItemViewHolder>() {
 
