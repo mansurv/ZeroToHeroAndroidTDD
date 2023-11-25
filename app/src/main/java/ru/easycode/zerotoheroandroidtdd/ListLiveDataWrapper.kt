@@ -9,7 +9,7 @@ interface ListLiveDataWrapper {
         fun update(value: List<ItemUi>)
     }
     interface Read {
-        fun livedata(): LiveData<List<ItemUi>>
+        fun liveData(): LiveData<List<ItemUi>>
     }
     interface Add {
         fun add(value: ItemUi)
@@ -28,7 +28,7 @@ interface ListLiveDataWrapper {
             liveData.value = value
         }
 
-        override fun livedata(): LiveData<List<ItemUi>> {
+        override fun liveData(): LiveData<List<ItemUi>> {
             return liveData
         }
 

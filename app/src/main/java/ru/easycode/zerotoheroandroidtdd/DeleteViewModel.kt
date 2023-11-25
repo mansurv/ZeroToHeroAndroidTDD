@@ -19,7 +19,7 @@ class DeleteViewModel(
 ): ViewModel() {
     private val innerLiveData = MutableLiveData<String>()
     val liveData: LiveData<String>
-    get() = innerLiveData
+        get() = innerLiveData
 
     private val viewModelScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 

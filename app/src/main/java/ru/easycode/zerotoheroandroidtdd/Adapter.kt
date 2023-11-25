@@ -11,10 +11,10 @@ import ru.easycode.zerotoheroandroidtdd.databinding.ItemLayoutBinding
 class Adapter(private val deleteItem: DeleteItemUi): RecyclerView.Adapter<Adapter.ItemViewHolder>() {
 
     private val list = mutableListOf<ItemUi>()
-    fun add(source: CharSequence) {
+    /*fun add(source: CharSequence) {
         list.add(source)
         notifyItemInserted(list.size - 1)
-    }
+    }*/
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ItemViewHolder(
         deleteItem,
         ItemLayoutBinding.inflate(LayoutInflater.from(parent.context))
@@ -25,7 +25,6 @@ class Adapter(private val deleteItem: DeleteItemUi): RecyclerView.Adapter<Adapte
         holder.bind(list[position])
     }
     fun update(newList: List<ItemUi>) {
-        //val diffUtil = DiffUtilCallback(list, newList)
         val diff = Diff(list, newList)
         val result = DiffUtil.calculateDiff(diff)
         list.clear()
@@ -44,7 +43,7 @@ class Adapter(private val deleteItem: DeleteItemUi): RecyclerView.Adapter<Adapte
         }
     }
 }
-private  class DiffUtilCallback(
+private  class Diff(
     private val old: List<ItemUi>,
     private val new: List<ItemUi>
 ): DiffUtil.Callback() {

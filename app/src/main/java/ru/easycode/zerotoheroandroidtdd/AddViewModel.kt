@@ -14,7 +14,7 @@ class AddViewModel(
     private val liveDataWrapper: ListLiveDataWrapper.Add,
     private val clear: ClearViewModel,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
-    private val dispatcherMain: CoroutineDispatcher = Dispatchers.Main
+    private val dispatcherMain: CoroutineDispatcher = Dispatchers.Main,
 
 ): ViewModel() {
 
@@ -22,7 +22,10 @@ class AddViewModel(
     fun add(value: String) {
         viewModelScope.launch(dispatcher) {
             val id = repository.add(value)
-            val itemUi = ItemUi(id, value)
+            val itemUi = ItemUi(
+                id as Long,
+                value
+            )
             withContext(dispatcherMain) {
                 liveDataWrapper.add(itemUi)
                 comeback()
