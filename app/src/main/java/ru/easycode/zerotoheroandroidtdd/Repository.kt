@@ -1,7 +1,7 @@
 package ru.easycode.zerotoheroandroidtdd
 
-import com.netmontools.filesguide.ui.home.database.ItemCache
-import com.netmontools.filesguide.ui.home.database.ItemsDao
+import ru.easycode.zerotoheroandroidtdd.ItemCache
+import ru.easycode.zerotoheroandroidtdd.ItemsDao
 
 interface Repository {
 
@@ -12,7 +12,6 @@ interface Repository {
         fun add(value: String)
     }
     interface Mutable: Read, Add
-
     class Base(
         private val dataSource: ItemsDao,
         private val now: Now
@@ -20,9 +19,8 @@ interface Repository {
         override fun list(): List<String> {
             return dataSource.list().map {it.text}
         }
-
         override fun add(value: String) {
             dataSource.add(ItemCache(now.nowMillis(), value))
         }
     }
-}
+}//39:11

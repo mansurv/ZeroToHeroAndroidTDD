@@ -26,7 +26,6 @@ class AddBottomSheetFragment: BottomSheetDialogFragment(R.layout.add_layout) {
         (dialog as BottomSheetDialog).onBackPressedDispatcher.addCallback(onBackPressedCallback)
         return dialog
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val input = view.findViewById<TextInputEditText>(R.id.addInputEditText)
