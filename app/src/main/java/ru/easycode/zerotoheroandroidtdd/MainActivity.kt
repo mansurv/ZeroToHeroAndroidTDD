@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.init()
     }
-
     fun <T: ViewModel> viewModel(clasz: Class<T>): T {
         return (application as ProvideViewModel).viewModel(clasz)
     }

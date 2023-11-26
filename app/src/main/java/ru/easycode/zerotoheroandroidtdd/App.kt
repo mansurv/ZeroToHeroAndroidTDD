@@ -24,7 +24,7 @@ class App: Application(), ProvideViewModel {
     }
 }
 interface ProvideViewModel {
-    fun<T: ViewModel> viewModel(clasz: Class<T>): T
+    fun <T: ViewModel> viewModel(clasz: Class<T>): T
     class Base(core: Core, private val clear: ClearViewModel): ProvideViewModel {
 
         private val repository = Repository.Base(core.dao(), Now.Base())
