@@ -1,5 +1,10 @@
 package ru.easycode.zerotoheroandroidtdd.create
 
+import androidx.fragment.app.FragmentManager
 import ru.easycode.zerotoheroandroidtdd.main.Screen
 
-object CreateScreen: Screen
+object CreateScreen: Screen.Replace(CreateFragment::class.java) {
+    override fun show(supportFragmentManager: FragmentManager, containerId: Int) {
+        TODO("Not yet implemented")
+    }
+}

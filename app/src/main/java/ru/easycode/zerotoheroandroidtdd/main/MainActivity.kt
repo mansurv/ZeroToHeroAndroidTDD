@@ -16,6 +16,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = viewModel(MainViewModel::class.java)
+        viewModel.liveData().observe(this) {
+            it.show(supportFragmentManager, binding.container.id)
+        }
+
     }
     override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T =
         (application as ProvideViewModel).viewModel(viewModelClass)

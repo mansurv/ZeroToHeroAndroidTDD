@@ -1,14 +1,15 @@
 package ru.easycode.zerotoheroandroidtdd.core
 
-import android.graphics.drawable.DrawableContainer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import ru.easycode.zerotoheroandroidtdd.databinding.ActivityMainBinding.bind
 
-abstract class AbstractFragment<B: ViewBinding> {
+abstract class AbstractFragment<B: ViewBinding>: Fragment() {
+
+    protected var _binding: B?= null
     protected val binding get() = _binding!!
 
             override fun onCreateView(
