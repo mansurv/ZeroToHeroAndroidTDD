@@ -30,5 +30,4 @@ abstract class AbstractFragment<B: ViewBinding>: Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }
