@@ -6,12 +6,11 @@ import androidx.lifecycle.ViewModel
 class App: Application(), ProvideViewModel {
     private lateinit var factory: ViewModelFactory
     private val clear: ClearViewModel = object: ClearViewModel {
-        override fun clear(viewModelClass: Class<out ViewModel>) =
-            factory.clear(viewModelClass)
+        override fun clear(viewModelClass: Class<out ViewModel>) = factory.clear(viewModelClass)
     }
     override fun onCreate() {
         super.onCreate()
-        //val provideViewModel = ProvideViewModel.Base(clear)
+        val provideViewModel = ProvideViewModel.Base(clear)
         factory = ViewModelFactory.Base(provideViewModel)
 
     }

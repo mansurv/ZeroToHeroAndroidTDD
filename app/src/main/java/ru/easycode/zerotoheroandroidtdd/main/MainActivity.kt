@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T =
-        (application as ProvideViewModel).viewModel(viewModelClass)
+
+    fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {
+        return (application as ProvideViewModel).viewModel(viewModelClass)
+    }
 }

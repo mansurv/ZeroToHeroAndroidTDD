@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 
 interface LiveDataWrapper {
     interface Read<T : Any> {
-        fun liveData() = LiveData<T>
+        fun liveData() : LiveData<T>
     }
 
     interface Update<T : Any> {
@@ -22,17 +22,4 @@ interface LiveDataWrapper {
             liveData.value = value
         }
     }
-}
-
-
-
-
-
-
-
-
-
-            >
-
-            abstract class >
 }

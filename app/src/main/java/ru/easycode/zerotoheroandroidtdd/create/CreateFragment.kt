@@ -26,6 +26,7 @@ class CreateFragment: AbstractFragment<FragmentCreateBinding>() {
         }
 
         binding.createButton.setOnClickListener {
+            hideKeyboard()
             viewModel.add(binding.inputEditText.text.toString())
         }
     }
