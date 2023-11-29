@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import ru.easycode.zerotoheroandroidtdd.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ProvideViewModel {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainViewModel

@@ -23,13 +23,16 @@ interface ListLiveDataWrapper {
         override fun update(value: List<String>) {
             liveData.postValue(value)
         }
+
         override fun livedata(): LiveData<List<String>> {
             return liveData
         }
+
         override fun add(value: String) {
-            val list = liveData.value?.toMutableList()?: ArrayList()
+            val list = liveData.value?.toMutableList() ?: ArrayList()
             list.add(value)
             update(list)
 
+        }
     }
 }
