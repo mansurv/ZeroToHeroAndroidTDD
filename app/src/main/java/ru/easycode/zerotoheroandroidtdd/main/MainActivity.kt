@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import ru.easycode.zerotoheroandroidtdd.core.ProvideViewModel
 import ru.easycode.zerotoheroandroidtdd.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ProvideViewModel {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainViewModel
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {
+    override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {
         return (application as ProvideViewModel).viewModel(viewModelClass)
     }
 }

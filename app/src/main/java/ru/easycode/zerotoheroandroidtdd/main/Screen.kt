@@ -2,6 +2,7 @@ package ru.easycode.zerotoheroandroidtdd.main
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import ru.easycode.zerotoheroandroidtdd.core.AbstractFragment
 
 
 interface Screen {

@@ -30,4 +30,8 @@ class CreateFragment: AbstractFragment<FragmentCreateBinding>() {
             viewModel.add(binding.inputEditText.text.toString())
         }
     }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        //onBackPressedCallback.remove()
+    }
 }

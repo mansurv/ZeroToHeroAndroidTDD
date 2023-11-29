@@ -69,7 +69,7 @@ class Task025Test {
 //        createPage.clickCreateButton()
 
 //        createPage.checkNotVisibleNow()
-//        listPage.checkVisibleNow()
+ //        listPage.checkVisibleNow()
 //       listPage.checkTextAtPosition(0, "one")
 //    }
 
