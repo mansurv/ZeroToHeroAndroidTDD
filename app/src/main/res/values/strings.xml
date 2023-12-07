@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ZeroToHeroAndroidTDD</string>
+    <string name="are_you_sure_want_to_delete_item">Are you sure want to delete item?</string>
+    <string name="save">save</string>
+    <string name="update">update</string>
+    <string name="delete">delete</string>
+    <string name="add">add</string>
 </resources>
