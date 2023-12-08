@@ -20,9 +20,7 @@ interface BundleWrapper {
         override fun restore(): UiState {
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 bundle.getSerializable(KEY, UiState::class.java) as UiState
-            } else {
-                bundle.getSerializable(KEY)
-            }
+            } else bundle.getSerializable(KEY) as UiState
         }
 
         companion object {
