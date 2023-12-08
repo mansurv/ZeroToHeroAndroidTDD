@@ -43,7 +43,7 @@ class Task015Test {
                 isAssignableFrom(ProgressBar::class.java),
                 withId(R.id.progressBar)
             )
-        ).check(matches(not(isDisplayed())))
+         ).check(matches(not(isDisplayed())))
 
         onView(
             allOf(
