@@ -10,14 +10,7 @@ class MainViewModel(
     private val repository: Repository
 ): LiveDataWrapper.Observe {
     private val viewModelScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
-    /*fun liveData() = liveDataWrapper.liveData()
-    fun load() {
-        liveDataWrapper.update(UiState.ShowProgress)
-        viewModelScope.launch {
-            val result = repository.load()
-            liveDataWrapper.update(UiState.ShowData(result.text))
-        }
-    }*/
+    
     fun save(bundleWrapper: BundleWrapper.Save) {
         liveDataWrapper.save(bundleWrapper)
     }
