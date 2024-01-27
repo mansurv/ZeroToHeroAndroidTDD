@@ -10,10 +10,7 @@ import ru.easycode.zerotoheroandroidtdd.databinding.ItemLayoutBinding
 class Adapter: RecyclerView.Adapter<Adapter.ItemViewHolder>() {
 
     private val list = ArrayList<CharSequence>()
-    fun add(source: CharSequence) {
-        list.add(source)
-        notifyItemInserted(list.size - 1)
-    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(ItemLayoutBinding.inflate(LayoutInflater.from(parent.context)))
     }
