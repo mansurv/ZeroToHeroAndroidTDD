@@ -1,6 +1,5 @@
 package ru.easycode.zerotoheroandroidtdd.list
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import ru.easycode.zerotoheroandroidtdd.core.BundleWrapper
 import ru.easycode.zerotoheroandroidtdd.create.CreateScreen

@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity(), ProvideViewModel {
             it.show(supportFragmentManager, binding.container.id)
         }
 
+        viewModel.init(savedInstanceState == null)
+
     }
 
     override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {
