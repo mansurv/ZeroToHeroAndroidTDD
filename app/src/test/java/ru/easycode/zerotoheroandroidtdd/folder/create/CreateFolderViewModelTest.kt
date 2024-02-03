@@ -21,7 +21,7 @@ class CreateFolderViewModelTest {
     private lateinit var navigation: FakeNavigation.Update
     private lateinit var repository: FakeCreateRepository
     private lateinit var clear: FakeClear
-    private lateinit var viewModel: CreateFolderViewModel
+    private lateinit var viewModel: FolderCreateViewModel
 
     @Before
     fun setup() {
@@ -30,7 +30,7 @@ class CreateFolderViewModelTest {
         repository = FakeCreateRepository.Base(order, 45678)
         navigation = FakeNavigation.Base(order)
         liveDataWrapper = FakeAddLiveDataWrapper.Base(order)
-        viewModel = CreateFolderViewModel(
+        viewModel = FolderCreateViewModel(
             repository = repository,
             liveDataWrapper = liveDataWrapper,
             navigation = navigation,
@@ -47,7 +47,7 @@ class CreateFolderViewModelTest {
         repository.checkCreate("some folder name")
         liveDataWrapper.check(FolderUi(id = 45678, title = "some folder name", notesCount = 0))
         navigation.checkScreen(FoldersListScreen)
-        clear.check(listOf(CreateFolderViewModel::class.java))
+        clear.check(listOf(FolderCreateViewModel::class.java))
 
         order.check(listOf(REPOSITORY_CREATE, LIVEDATA_CREATE, CLEAR, NAVIGATE))
     }
@@ -56,7 +56,7 @@ class CreateFolderViewModelTest {
     fun test_comeback() {
         viewModel.comeback()
 
-        clear.check(listOf(CreateFolderViewModel::class.java))
+        clear.check(listOf(FolderCreateViewModel::class.java))
         navigation.checkScreen(FoldersListScreen)
         order.check(listOf(CLEAR, NAVIGATE))
     }

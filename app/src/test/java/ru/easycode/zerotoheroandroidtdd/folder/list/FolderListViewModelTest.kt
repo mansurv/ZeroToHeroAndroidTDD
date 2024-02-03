@@ -10,7 +10,7 @@ import ru.easycode.zerotoheroandroidtdd.core.Order
 import ru.easycode.zerotoheroandroidtdd.folder.core.Folder
 import ru.easycode.zerotoheroandroidtdd.folder.core.FolderLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.folder.core.FoldersRepository
-import ru.easycode.zerotoheroandroidtdd.folder.create.CreateFolderScreen
+import ru.easycode.zerotoheroandroidtdd.folder.create.FolderCreateScreen
 import ru.easycode.zerotoheroandroidtdd.folder.details.FolderDetailsScreen
 import ru.easycode.zerotoheroandroidtdd.folder.list.FakeLiveDataWrapper.Companion.UPDATE
 import ru.easycode.zerotoheroandroidtdd.folder.list.FakeRepository.Companion.FOLDERS
@@ -64,7 +64,7 @@ class FolderListViewModelTest {
     fun test_add() {
         viewModel.addFolder()
 
-        navigation.checkScreen(CreateFolderScreen)
+        navigation.checkScreen(FolderCreateScreen)
         order.check(listOf(NAVIGATE))
     }
 

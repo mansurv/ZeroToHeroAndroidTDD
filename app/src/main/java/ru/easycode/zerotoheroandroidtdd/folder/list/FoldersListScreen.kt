@@ -1,4 +1,5 @@
 package ru.easycode.zerotoheroandroidtdd.folder.list
 
-object FoldersListScreen {
-}
+import ru.easycode.zerotoheroandroidtdd.main.Screen
+
+object FoldersListScreen: Screen.Replace(FoldersListFragment::class.java)

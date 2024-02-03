@@ -7,16 +7,22 @@
     <TextView
         android:id="@+id/createFolderTextView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:text="@string/input_folder_name" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/createFolderEditText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:padding="8dp"/>
 
     <Button
         android:id="@+id/saveFolderButton"
+        android:layout_gravity="bottom"
+        android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/save" />

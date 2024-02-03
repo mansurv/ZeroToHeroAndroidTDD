@@ -1,0 +1,30 @@
+package ru.easycode.zerotoheroandroidtdd.folder.list
+
+import ru.easycode.zerotoheroandroidtdd.core.BundleWrapper
+import ru.easycode.zerotoheroandroidtdd.core.LiveDataWrapper
+
+interface FoldersListLiveDataWrapper {
+    interface Read: LiveDataWrapper.Read<List<CharSequence>>
+    interface Update: LiveDataWrapper.Update<List<CharSequence>>
+    interface Mutable: Read, Update {
+        fun save(bundleWrapper: BundleWrapper.Save)
+    }
+    interface Add{
+        fun add(source: CharSequence)
+    }
+    interface All: Mutable, Add
+    class Base: LiveDataWrapper.Abstract<List<CharSequence>>(), All {
+        override fun save(bundleWrapper: BundleWrapper.Save) {
+            liveData.value?.let {
+                bundleWrapper.save(ArrayList(it))
+            }
+        }
+        override fun add(source: CharSequence) {
+            val currentList = liveData.value?: ArrayList()
+            val newList = ArrayList<CharSequence>()
+            newList.addAll(currentList)
+            newList.add(source)
+            update(newList)
+        }
+    }
+}
