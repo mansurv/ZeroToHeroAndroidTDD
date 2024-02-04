@@ -1,10 +1,10 @@
 package ru.easycode.zerotoheroandroidtdd.core
 
-import MainViewModel
 import androidx.lifecycle.ViewModel
 import ru.easycode.zerotoheroandroidtdd.folder.create.FolderCreateViewModel
+import ru.easycode.zerotoheroandroidtdd.folder.list.FoldersListLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.folder.list.FoldersListViewModel
-import ru.easycode.zerotoheroandroidtdd.folder.list.ListLiveDataWrapper
+
 import ru.easycode.zerotoheroandroidtdd.main.MainViewModel
 import ru.easycode.zerotoheroandroidtdd.main.Navigation
 
@@ -15,7 +15,7 @@ interface ProvideViewModel {
     ): ProvideViewModel {
 
         private val navigation = Navigation.Base()
-        private val sharedLiveData: ListLiveDataWrapper.All = ListLiveDataWrapper.Base()
+        private val sharedLiveData: FoldersListLiveDataWrapper.All = FoldersListLiveDataWrapper.Base()
         override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {
             return when(viewModelClass) {
                 MainViewModel::class.java -> MainViewModel(navigation)

@@ -9,7 +9,7 @@ class ProvideViewModelTest {
     fun test() {
         val order = Order()
         val provide = FakeProvide.Base(order)
-        val factory = ProvideViewModel.Factory(provide)
+        val factory = ProvideViewModel.ViewModelFactory(provide)
 
         factory.viewModel(FakeViewModelOne::class.java)
         factory.viewModel(FakeViewModelTwo::class.java)
