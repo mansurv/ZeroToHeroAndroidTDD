@@ -11,10 +11,6 @@ import ru.easycode.zerotoheroandroidtdd.databinding.ItemLayoutBinding
 class Adapter(private val deleteItem: DeleteItemUi): RecyclerView.Adapter<Adapter.ItemViewHolder>() {
 
     private val list = mutableListOf<ItemUi>()
-    /*fun add(source: CharSequence) {
-        list.add(source)
-        notifyItemInserted(list.size - 1)
-    }*/
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ItemViewHolder(
         deleteItem,
         ItemLayoutBinding.inflate(LayoutInflater.from(parent.context))

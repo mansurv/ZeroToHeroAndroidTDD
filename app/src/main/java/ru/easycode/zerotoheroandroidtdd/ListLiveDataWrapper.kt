@@ -24,8 +24,8 @@ interface ListLiveDataWrapper {
 
         private val liveData = MutableLiveData<List<ItemUi>>()
         override fun update(value: List<ItemUi>) {
-            //liveData.postValue(value)
-            liveData.value = value
+            liveData.postValue(value)
+            //liveData.value = value
         }
 
         override fun liveData(): LiveData<List<ItemUi>> {
