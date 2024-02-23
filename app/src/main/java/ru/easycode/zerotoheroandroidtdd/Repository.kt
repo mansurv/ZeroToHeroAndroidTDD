@@ -1,13 +1,11 @@
 package ru.easycode.zerotoheroandroidtdd
 
-import ru.easycode.zerotoheroandroidtdd.ItemCache
-import ru.easycode.zerotoheroandroidtdd.ItemsDao
-
 interface Repository {
     interface ReadItem {
         fun item(id: Long): Item
     }
-    interface DeleteItem {
+    interface ChangeItem {
+        fun update(id: Long, newText: String)
         fun delete(id: Long)
     }
     interface Read {
@@ -17,8 +15,8 @@ interface Repository {
         fun add(value: String): Long
     }
     interface Mutable: Read, Add
-    interface Delete: ReadItem, DeleteItem
-    interface All: Mutable, Delete
+    interface Change: ReadItem, ChangeItem
+    interface All: Mutable, Change
     class Base(
         private val dataSource: ItemsDao,
         private val now: Now
@@ -37,6 +35,11 @@ interface Repository {
         }
         override fun delete(id:Long) {
             dataSource.delete(id)
+        }
+        override fun update(id:Long, newText: String) {
+            val current = dataSource.item(id)
+            val new = current.copy(text = newText)
+            dataSource.add(new)
         }
     }
 }

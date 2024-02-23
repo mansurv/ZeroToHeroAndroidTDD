@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 interface ListLiveDataWrapper {
 
     interface Update {
-        fun update(value: List<ItemUi>)
+        fun update(list: List<ItemUi>)
     }
     interface Read {
         fun liveData(): LiveData<List<ItemUi>>
@@ -15,17 +15,27 @@ interface ListLiveDataWrapper {
         fun add(value: ItemUi)
     }
 
-    interface Delete {
+    interface Change {
         fun delete(item: ItemUi)
+        fun update(item: ItemUi)
     }
+
+
     interface Mutable : Update, Read
-    interface All : Mutable, Add, Delete
+    interface All : Mutable, Add, Change
     class Base : All {
 
         private val liveData = MutableLiveData<List<ItemUi>>()
-        override fun update(value: List<ItemUi>) {
-            liveData.postValue(value)
-            //liveData.value = value
+        override fun update(list: List<ItemUi>) {
+            liveData.value = list
+        }
+
+        override fun update(item: ItemUi) {
+            val list = liveData.value?.toMutableList() ?: ArrayList()
+            list.find { it.areItemsSame(item) }?.let {
+                list[list.indexOf(it)] = item
+            }
+            update(list)
         }
 
         override fun liveData(): LiveData<List<ItemUi>> {

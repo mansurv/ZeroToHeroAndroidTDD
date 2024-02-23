@@ -33,7 +33,7 @@ interface ProvideViewModel {
         override fun<T: ViewModel> viewModel(clasz: Class<T>): T = when(clasz) {
             MainViewModel::class.java -> MainViewModel(repository, liveDataWrapper)
             AddViewModel::class.java -> AddViewModel(repository, liveDataWrapper, clear)
-            else -> DeleteViewModel(liveDataWrapper,repository, clear)
+            else -> DetailsViewModel(liveDataWrapper,repository, clear)
         } as T
     }
 }

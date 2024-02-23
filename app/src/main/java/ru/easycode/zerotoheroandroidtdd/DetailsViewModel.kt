@@ -10,9 +10,9 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class DeleteViewModel(
-    private val deleteLiveDataWrapper: ListLiveDataWrapper.Delete,
-    private val repository: Repository.Delete,
+class DetailsViewModel(
+    private val changeLiveDataWrapper: ListLiveDataWrapper.Change,
+    private val repository: Repository.Change,
     private val clear: ClearViewModel,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
     private val dispatcherMain: CoroutineDispatcher = Dispatchers.Main
@@ -36,12 +36,21 @@ class DeleteViewModel(
         viewModelScope.launch(dispatcher) {
             repository.delete(itemId)
             withContext(dispatcherMain) {
-                deleteLiveDataWrapper.delete(ItemUi(itemId, liveData.value?: ""))
+                changeLiveDataWrapper.delete(ItemUi(itemId, liveData.value?: ""))
+                comeback()
+            }
+        }
+    }
+    fun update(itemId: Long, newText: String) {
+        viewModelScope.launch(dispatcher) {
+            repository.update(itemId, newText)
+            withContext(dispatcherMain) {
+                changeLiveDataWrapper.update(ItemUi(itemId, newText))
                 comeback()
             }
         }
     }
     fun comeback() {
-        clear.clearViewModel(DeleteViewModel::class.java)
+        clear.clearViewModel(DetailsViewModel::class.java)
     }
 }

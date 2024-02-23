@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity(), ProvideViewModel {
         viewModel = viewModel(MainViewModel::class.java)
         val adapter = Adapter(object: DeleteItemUi {
             override fun delete(itemId: Long) {
-                DeleteBottomSheetFragment.newInstance(itemId)
-                    .show(supportFragmentManager, "DeleteBottomSheetFragment")
+                DetailsBottomSheetFragment.newInstance(itemId)
+                    .show(supportFragmentManager, "DetailsBottomSheetFragment")
             }
         })
         binding.recyclerView.adapter = adapter

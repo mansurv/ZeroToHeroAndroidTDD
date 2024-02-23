@@ -6,15 +6,14 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
-import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputEditText
 
-class DeleteBottomSheetFragment: BottomSheetDialogFragment(R.layout.delete_layout) {
+class DetailsBottomSheetFragment: BottomSheetDialogFragment(R.layout.details_layout) {
     companion object {
-        fun newInstance(itemId: Long): DeleteBottomSheetFragment {
-            val instance = DeleteBottomSheetFragment()
+        fun newInstance(itemId: Long): DetailsBottomSheetFragment {
+            val instance = DetailsBottomSheetFragment()
             instance.arguments = Bundle().apply {
                 putLong(KEY, itemId)
             }
@@ -23,12 +22,12 @@ class DeleteBottomSheetFragment: BottomSheetDialogFragment(R.layout.delete_layou
 
         private const val KEY = "itemIdToDelete"
     }
-    private lateinit var viewModel: DeleteViewModel
+    private lateinit var viewModel: DetailsViewModel
     private lateinit var onBackPressedCallback: OnBackPressedCallback
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog =  super.onCreateDialog(savedInstanceState)
-        viewModel = (activity as ProvideViewModel).viewModel(DeleteViewModel::class.java)
+        viewModel = (activity as ProvideViewModel).viewModel(DetailsViewModel::class.java)
         onBackPressedCallback = object: OnBackPressedCallback(true) {
 
             override fun handleOnBackPressed() {
@@ -41,19 +40,32 @@ class DeleteBottomSheetFragment: BottomSheetDialogFragment(R.layout.delete_layou
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as ProvideViewModel).viewModel(DeleteViewModel::class.java)
+        viewModel = (activity as ProvideViewModel).viewModel(DetailsViewModel::class.java)
+
         val itemId = requireArguments().getLong(KEY)
-        val button = view.findViewById<Button>(R.id.deleteButton)
-        button.setOnClickListener {
+
+        val textView = view.findViewById<TextView>(R.id.itemTextView)
+        val inputEditTextt = view.findViewById<TextInputEditText>(R.id.itemInputEditText)
+        val deleteButton = view.findViewById<Button>(R.id.deleteButton)
+        val updateButton = view.findViewById<Button>(R.id.updateButton)
+
+        deleteButton.setOnClickListener {
             viewModel.delete(itemId)
             dismiss()
         }
-        val textView = view.findViewById<TextView>(R.id.itemTitleTextView)
-        view.findViewById<View>(R.id.saveButton).setOnClickListener {
-            viewModel.liveData.observe(viewLifecycleOwner) {
-                textView.text = it
-            }
+
+        updateButton.setOnClickListener {
+            viewModel.update(itemId, inputEditTextt.text.toString())
+            dismiss()
         }
+
+
+        viewModel.liveData.observe(viewLifecycleOwner) {
+            textView.text = it
+            inputEditTextt.setText(it)
+            inputEditTextt.setSelection(it.length)
+        }
+
         viewModel.init(itemId)
     }
 }
