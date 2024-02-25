@@ -1,4 +1,3 @@
 package ru.easycode.zerotoheroandroidtdd.folder.core
 
-class Folder {
-}
+data class Folder(val id: Long, val text: String)
